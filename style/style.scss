@@ -1,0 +1,268 @@
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      html {
+        font-size: 16px;
+        background-color: rgb(0, 0, 0);
+      }
+
+      body {
+        padding: 1rem;
+        font-family: Times, "Times New Roman", serif;
+        font-size: 1rem;
+        line-height: 1.375;
+        cursor: default;
+      }
+
+      a {
+        color: red;
+        cursor: pointer;
+      }
+
+      .book {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        max-width: calc(100% - 1rem);
+        width: 100%;
+        max-height: calc(100% - 1rem);
+        height: 100%;
+        overflow: hidden;
+        background-color: white;
+        -webkit-box-shadow: 0 1rem 1rem -1rem rgb(0, 0, 0);
+        box-shadow: 0 1rem 1rem -1rem rgb(0, 0, 0);
+        cursor:e-resize;
+      }
+
+      @media screen and (min-width: 900px) {
+        .book {
+          max-width: calc(100% - 3rem);
+          max-height: calc(100% - 3rem);
+        }
+      }
+
+      .nav {
+        display: none;
+      }
+
+      @media screen and (min-width: 900px) {
+        .nav {
+          display: block;
+          position: absolute;
+          z-index: 999;
+          top: 0;
+          left: 0;
+          width: 25%;
+          height: 100%;
+          padding: 1.5rem;
+        }
+
+        .nav::before,
+        .nav::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          width: 1.5rem;
+          height: 100%;
+        }
+
+        .nav::before {
+          right: 0;
+          background-image: -webkit-gradient(linear, left top, right top, from(rgba(180, 0, 0, 0)), to(rgba(200,200,200,1)));
+          background-image: -o-linear-gradient(left, rgba(200,200,200,0), rgba(200,200,200,1));
+          background-image: linear-gradient(90deg, rgba(200,200,200,0), rgba(200,200,200,1));
+        }
+
+        .nav::after {
+          right: -1.5rem;
+          background-image: -webkit-gradient(linear, left top, right top, from(rgba(222,222,222,1)), to(rgba(222,222,222,0)));
+          background-image: -o-linear-gradient(left, rgba(222,222,222,1), rgba(222,222,222,0));
+          background-image: linear-gradient(90deg, rgba(222,222,222,1), rgba(222,222,222,0));
+        }
+
+        .nav ol {
+          list-style-position: inside;
+        }
+
+        .nav li {
+          padding-left: 1.5rem;
+          text-indent: -1.5rem;
+          -webkit-transition: opacity .5s;
+          -o-transition: opacity .5s;
+          transition: opacity .5s;
+        }
+
+        .nav ol:hover li:not(:hover) {
+          opacity: .25;
+        }
+      }
+
+      .slides {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        z-index: 888;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+      }
+
+      @media screen and (min-width: 900px) {
+        .slides {
+          width: 75%;
+        }
+      }
+
+      .slide {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        scroll-snap-align: center;
+      }
+
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 1.125;
+      }
+
+      @media screen and (min-width: 900px) {
+        .content {
+          font-size: 3rem;
+          padding: 3rem;
+        }
+      }
+
+      .content h1,
+      .content h2 {
+        line-height: 1;
+      }
+
+      .content h1 {
+        font-size: 2em;
+      }
+
+      .content h2 {
+        font-size: 1.5em;
+      }
+
+      .content p {
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+
+      @keyframes blink {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      @-webkit-keyframes blink {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      .content img {
+        display: block;
+        margin: 0 auto;
+        height: 1em;
+      }
+
+      .content > *:not(:last-child) {
+        margin-bottom: 1em;
+      }
+
+      .inline-icon {
+        display: inline-block;
+        height: 50em;
+        vertical-align: middle;
+        margin-left: 0.3em;
+      }
+
+      img.inline-icon {
+        display: inline-block;
+        width: 16em;  // 글자 크기에 비례한 너비
+        height: auto;  // 비율 유지
+        vertical-align: middle;
+      }
+      .slideshow-container {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        width: 300px;
+        height: auto;
+        overflow: hidden;
+        z-index: 1000;
+        border: 2px solid rgb(255, 255, 255);
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        text-align: left;
+        padding-bottom: 0.5rem;
+      }
+      
+      .slideshow-img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        transition: opacity 1s;
+        opacity: 1;
+        background-color: black;
+      }
+      
+      .slideshow-caption {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+      }
+      
+ 
+      /* 아이패드 프로 가로 모드 대응 */
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .slideshow-img {
+      max-height: 25vh;
+    }
+    .slideshow-container {
+        width: 22%;
+        left: -1;
+        bottom: 1;
+        border: none;
+        padding: 0.2rem;
+      }
+  }
